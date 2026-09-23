@@ -1,6 +1,13 @@
-import { pipeline, type FeatureExtractionPipeline } from "@xenova/transformers";
+import { pipeline, env, type FeatureExtractionPipeline } from "@xenova/transformers";
 
 const EMBEDDING_MODEL = "Xenova/all-MiniLM-L6-v2"; // 384 dimensions
+
+// Vercel's serverless filesystem is read-only except /tmp; the default cache
+// dir (./.cache) fails to write there, so redirect it on any deployment
+// that sets VERCEL (also true for other read-only-root platforms via TMPDIR).
+if (process.env.VERCEL) {
+  env.cacheDir = "/tmp/xenova-cache";
+}
 
 let extractorPromise: Promise<FeatureExtractionPipeline> | null = null;
 

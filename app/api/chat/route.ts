@@ -1,6 +1,10 @@
 import { streamAnswer, type ConversationMessage } from "@/lib/rag";
 
 export const runtime = "nodejs";
+// Keep in sync with REQUEST_TIMEOUT_MS below, so our own graceful timeout
+// error fires before the platform kills the function outright. Check your
+// Vercel plan supports this duration for serverless functions.
+export const maxDuration = 60;
 
 const MAX_MESSAGE_LENGTH = 2000;
 const MAX_HISTORY_ITEMS = 20;
