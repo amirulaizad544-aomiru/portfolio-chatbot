@@ -101,7 +101,7 @@ export function ChatBox({ embed = false }: ChatBoxProps) {
       }
     >
       <header className="flex items-center justify-between border-b border-border px-4 py-3">
-        <h2 className="text-sm font-semibold text-foreground">I&lsquo;m Amirul&lsquo;s Chat Assistant</h2>
+        <h2 className="text-sm font-semibold text-foreground">Amirul&lsquo;s Chat Assistant</h2>
       </header>
 
       <div
